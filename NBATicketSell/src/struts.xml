@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.action.extension" value="action,,"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+		<action name="*_*_*" class="com.cm.action.{1}Action" method="{2}">
+			<result name="success">{3}.jsp</result>
+			<result name="queryAllUserToAdmin" type="chain">User_queryAllUser_allUser</result>
+			<result name="judge" type="chain">User_judge_welcome</result>
+			<result name="userWelcome" type="chain">Ticket_execute_welcome</result>
+			<result name="queryAllTicket" type="chain">Ticket_execute_main</result>
+			<result name="queryAllUser" type="chain">User_queryAllUser_allUser</result>
+			<result name="usernameIsExit">reg.jsp</result>
+			<result name="wrongUser">login.jsp</result>
+			<result name="error">error.jsp</result>
+			<result name="input">Order_updateOrder_myOrder</result>
+		</action>
+    </package>
+
+</struts>
